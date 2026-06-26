@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>甄果黔荟 · 刺梨复合果蔬汁 | 贵州特色天然健康饮品</title>
+  <style>
+    /* ===== 全局重置 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: #fffdf5;
+      color: #2d2d2d;
+      overflow-x: hidden;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== 色彩变量 ===== */
+    :root {
+      --yellow: #f9c41a;
+      --orange: #f47f20;
+      --deep-orange: #d45f00;
+      --green: #5aab3e;
+      --dark-green: #2d6e1a;
+      --cream: #fffbee;
+      --brown: #7b3f00;
+    }
+
+    /* ===== Hero区块 ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* 产品大图背景 */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-bg-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-bg-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255,251,238,0.55) 0%,
+        rgba(255,251,238,0.25) 30%,
+        rgba(255,251,238,0.15) 55%,
+        rgba(255,251,238,0.45) 80%,
+        rgba(255,251,238,0.92) 100%
+      );
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      z-index: 1;
+    }
+    .hero-bg-circle.c1 {
+      width: 260px; height: 260px;
+      background: var(--yellow);
+      top: -80px; right: -60px;
+    }
+    .hero-bg-circle.c2 {
+      width: 180px; height: 180px;
+      background: var(--orange);
+      bottom: 20%; left: -60px;
+    }
+    .float-leaf {
+      position: absolute;
+      font-size: 22px;
+      animation: floatLeaf 6s ease-in-out infinite;
+      opacity: 0.4;
+      z-index: 1;
+    }
+    .float-leaf:nth-child(1) { top: 8%; left: 6%; animation-delay: 0s; }
+    .float-leaf:nth-child(2) { top: 16%; right: 8%; animation-delay: 1.5s; font-size: 18px; }
+    .float-leaf:nth-child(3) { bottom: 22%; left: 8%; animation-delay: 3s; font-size: 28px; }
+    .float-leaf:nth-child(4) { bottom: 28%; right: 6%; animation-delay: 0.8s; font-size: 20px; }
+    @keyframes floatLeaf {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(6deg); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 100%;
+      padding: 140px 0 48px;
+    }
+    .hero-title {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .hero-title .t1 {
+      display: block;
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-title .t2 {
+      display: block;
+      color: var(--dark-green);
+      font-size: 54%;
+      margin-top: 4px;
+    }
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .hero-slogan {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 0;
+      line-height: 1.7;
+      padding: 0 16px;
+    }
+    .hero-slogan em {
+      color: var(--orange);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(244,127,32,0.35);
+      letter-spacing: 1px;
+      width: 100%;
+    }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-outline {
+      background: transparent;
+      color: var(--orange);
+      border: 2px solid var(--orange);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 1px;
+      width: 100%;
+    }
+    .btn-outline:active { background: var(--orange); color: #fff; }
+
+    /* ===== 品牌横幅（数据条） ===== */
+    .banner-section {
+      background: linear-gradient(135deg, #f9c41a20, #f47f2015);
+      padding: 28px 16px;
+    }
+    .banner-section .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 12px;
+    }
+    .banner-section .stat-cell {
+      text-align: center;
+      min-width: 60px;
+      flex: 0 0 auto;
+    }
+    .banner-section .stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .banner-section .stat-label {
+      font-size: 11px;
+      color: #888;
+      margin-top: 2px;
+    }
+    .banner-section .stat-divider {
+      width: 1px;
+      height: 28px;
+      background: #e0d8c0;
+      align-self: center;
+    }
+
+    /* ===== 通用区块样式 ===== */
+    section {
+      padding: 48px 20px;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(244,127,32,0.1);
+      color: var(--orange);
+      border: 1px solid rgba(244,127,32,0.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: #777;
+      line-height: 1.7;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    /* ===== 核心亮点区块 ===== */
+    #features {
+      background: linear-gradient(160deg, #fffbee 0%, #fff8d6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .features-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+      border: 1px solid rgba(249,196,26,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.7;
+    }
+    .feature-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 36px;
+      font-weight: 900;
+      color: rgba(244,127,32,0.07);
+      line-height: 1;
+    }
+
+    /* ===== 产品展示区块 ===== */
+    #products {
+      background: #1a1a1a;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 48px 0;
+    }
+    #products .section-tag {
+      background: rgba(249,196,26,0.15);
+      color: var(--yellow);
+      border-color: rgba(249,196,26,0.3);
+    }
+    #products .section-title { color: #fff; }
+    #products .section-sub { color: rgba(255,255,255,0.6); }
+    .products-showcase {
+      display: flex;
+      flex-direction: column;
+      margin: 0 12px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .showcase-left {
+      background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+      padding: 36px 24px;
+    }
+    .showcase-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: #1a1a1a;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .showcase-left h2 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .showcase-left h2 span { color: var(--yellow); }
+    .showcase-left p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .nutrient-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .nutrient-pill {
+      background: rgba(249,196,26,0.12);
+      border: 1px solid rgba(249,196,26,0.3);
+      color: var(--yellow);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .showcase-stats {
+      display: flex;
+      justify-content: space-around;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stat-unit { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .stat-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .showcase-right {
+      background: linear-gradient(145deg, #f9c41a20, #f47f2020);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .showcase-right-img-card {
+      background: linear-gradient(145deg, rgba(249,196,26,0.15), rgba(244,127,32,0.15));
+      border-radius: 24px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid rgba(249,196,26,0.2);
+      width: 100%;
+    }
+    .showcase-right-img-card img {
+      width: 140px;
+      height: auto;
+      margin-bottom: 12px;
+      border-radius: 16px;
+    }
+    .showcase-right-img-card .img-title {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .showcase-right-img-card .img-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+    .showcase-right .nutrient-badges {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .showcase-right .nutrient-badge {
+      background: rgba(249,196,26,0.15);
+      border-radius: 10px;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .showcase-right .nutrient-badge .val {
+      color: var(--yellow);
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .showcase-right .nutrient-badge .lbl {
+      color: rgba(255,255,255,0.45);
+      font-size: 10px;
+    }
+    .showcase-right .btn-primary { margin-top: 20px; }
+
+    /* ===== 产品详细图片 ===== */
+    .product-detail-imgs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+      padding: 0 12px;
+    }
+    .product-detail-img-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-detail-img-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .product-detail-img-card .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #fff;
+      padding: 20px 16px 16px;
+    }
+    .product-detail-img-card .caption h3 { font-size: 17px; font-weight: 700; }
+    .product-detail-img-card .caption p { font-size: 12px; opacity: 0.8; }
+
+    /* ===== 贵州产地故事区块 ===== */
+    #story {
+      background: var(--cream);
+      position: relative;
+    }
+    .story-imgs {
+      position: relative;
+      height: 240px;
+      margin-bottom: 28px;
+    }
+    .story-img-wrap {
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .story-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-img-main {
+      width: 62%;
+      height: 70%;
+      top: 0; left: 0;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+    }
+    .story-img-secondary {
+      width: 48%;
+      height: 50%;
+      bottom: 0; right: 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 4px solid #fff;
+      z-index: 3;
+    }
+    .story-badge-float {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(244,127,32,0.4);
+      z-index: 5;
+    }
+    .story-badge-float .big-num { font-size: 24px; font-weight: 900; line-height: 1; }
+    .story-badge-float .big-unit { font-size: 10px; opacity: 0.85; }
+    .story-content .section-tag { margin-bottom: 12px; }
+    .story-content .section-title { margin-bottom: 12px; }
+    .story-content p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .story-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .story-highlight-item {
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid rgba(249,196,26,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .story-highlight-item .icon { font-size: 20px; margin-bottom: 6px; }
+    .story-highlight-item h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+    .story-highlight-item p { font-size: 11px; color: #888; margin: 0; }
+
+    /* ===== 营养科学区块 ===== */
+    #nutrition {
+      background: linear-gradient(160deg, #1e3a1e 0%, #2d5a1e 50%, #1e3a1e 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    #nutrition .section-tag {
+      background: rgba(90,171,62,0.2);
+      color: #7dd85a;
+      border-color: rgba(90,171,62,0.3);
+    }
+    #nutrition .section-title { color: #fff; }
+    #nutrition .section-sub { color: rgba(255,255,255,0.6); }
+    .nutrition-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .nutrition-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .nutrition-icon {
+      width: 60px; height: 60px;
+      margin: 0 auto 14px;
+      background: linear-gradient(135deg, rgba(90,171,62,0.2), rgba(249,196,26,0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      position: relative;
+    }
+    .nutrition-icon::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 1px dashed rgba(90,171,62,0.4);
+      animation: spin 12s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .nutrition-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .nutrition-highlight {
+      font-size: 12px;
+      color: #7dd85a;
+      font-weight: 600;
+      margin-bottom: 10px;
+      background: rgba(90,171,62,0.12);
+      padding: 3px 10px;
+      border-radius: 16px;
+      display: inline-block;
+    }
+    .nutrition-card p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* 低温技术说明 */
+    #nutrition .tech-box {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px 20px;
+    }
+    #nutrition .tech-box h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    #nutrition .tech-box h3 span { color: var(--yellow); }
+    #nutrition .tech-box p {
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    #nutrition .tech-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    #nutrition .tech-stat {
+      text-align: center;
+    }
+    #nutrition .tech-stat .val {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--yellow);
+    }
+    #nutrition .tech-stat .lbl {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+    }
+    #nutrition .tech-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #nutrition .tech-item {
+      background: rgba(90,171,62,0.1);
+      border: 1px solid rgba(90,171,62,0.2);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    #nutrition .tech-item .emoji { font-size: 22px; }
+    #nutrition .tech-item .info .title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    #nutrition .tech-item .info .desc {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    /* ===== 配方成分区块 ===== */
+    #formula {
+      background: linear-gradient(160deg, #fffbee, #fff8d6);
+    }
+    .formula-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .formula-center {
+      text-align: center;
+      position: relative;
+    }
+    .formula-bottle {
+      width: 160px;
+      height: 310px;
+      background: linear-gradient(145deg, #f9c41a, #f47f20, #d45f00);
+      border-radius: 48px 48px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-shadow: 0 16px 48px rgba(244,127,32,0.35);
+      position: relative;
+      overflow: hidden;
+      animation: bottleFloat 4s ease-in-out infinite;
+      margin: 0 auto;
+    }
+    @keyframes bottleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .formula-bottle::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 48px 48px 0 0;
+    }
+    .formula-bottle .inner {
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      width: 100%;
+    }
+    .formula-bottle .brand {
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 1.5px;
+    }
+    .formula-bottle .eng {
+      font-size: 8px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+    }
+    .formula-bottle .divider {
+      border-top: 1px solid rgba(255,255,255,0.3);
+      margin: 6px 0;
+    }
+    .formula-bottle .name {
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+    }
+    .formula-bottle .tags {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .formula-bottle .tags span {
+      background: rgba(255,255,255,0.2);
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 7px;
+      color: white;
+      font-weight: 700;
+    }
+    .formula-bottle .star {
+      font-size: 32px;
+      margin-top: 12px;
+    }
+    .formula-bottle .vol {
+      font-size: 10px;
+      color: rgba(255,255,255,0.7);
+      position: absolute;
+      bottom: 12px;
+    }
+    .formula-ingredients {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #fffbee, #fff8d6);
+      border: 1px solid rgba(249,196,26,0.25);
+      border-radius: 14px;
+      padding: 12px 16px;
+    }
+    .ingredient-emoji { font-size: 22px; }
+    .ingredient-info { flex: 1; }
+    .ingredient-info h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+    .ingredient-info p { font-size: 10px; color: #888; }
+    .ingredient-bar {
+      margin-top: 5px;
+      height: 3px;
+      background: #f0e8c8;
+      border-radius: 2px;
+      overflow: hidden;
+      width: 100%;
+    }
+    .ingredient-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+      border-radius: 2px;
+    }
+
+    /* ===== 信任背书区块 ===== */
+    #trust {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    #trust .section-tag {
+      background: rgba(249,196,26,0.1);
+      color: var(--yellow);
+      border-color: rgba(249,196,26,0.2);
+    }
+    #trust .section-title { color: #fff; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 24px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+    }
+    .trust-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .trust-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .trust-item p { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ===== 关于我们区块 ===== */
+    #about {
+      background: var(--cream);
+    }
+    .about-content .section-title { margin-bottom: 14px; }
+    .about-content p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .about-tag {
+      background: rgba(244,127,32,0.08);
+      color: var(--orange);
+      border: 1px solid rgba(244,127,32,0.2);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .about-img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .about-img-item {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .about-img-item.tall {
+      grid-row: span 2;
+    }
+    .about-img-item .ph {
+      width: 100%;
+      height: 100%;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px;
+    }
+    .about-img-item .ph-emoji { font-size: 40px; }
+    .about-img-item .ph-text {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .about-img-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ===== CTA区块 ===== */
+    #cta {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%);
+      text-align: center;
+      padding: 64px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+    #cta::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 150px; height: 150px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+    #cta .section-title {
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 14px;
+      font-size: 26px;
+      line-height: 1.4;
+    }
+    #cta p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.7;
+    }
+    .cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--orange);
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      width: 100%;
+    }
+    .btn-white:active { transform: scale(0.97); }
+    .btn-outline-white {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.8);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-outline-white:active { background: rgba(255,255,255,0.15); }
+
+    /* ===== 二维码咨询区 ===== */
+    .qr-section {
+      background: linear-gradient(160deg, #fffbee, #fff8d6);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .qr-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 8px 32px rgba(244,127,32,0.1);
+      border: 1px solid rgba(249,196,26,0.25);
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .qr-card-icon {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+    .qr-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+    .qr-card .qr-sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .qr-img-wrap {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid rgba(249,196,26,0.3);
+      box-shadow: 0 4px 20px rgba(249,196,26,0.2);
+      background: #fff;
+      padding: 8px;
+    }
+    .qr-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .qr-card .qr-tip {
+      font-size: 12px;
+      color: var(--orange);
+      font-weight: 600;
+      background: rgba(244,127,32,0.08);
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    /* ===== 页脚 ===== */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.4);
+      padding: 36px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+    footer p {
+      font-size: 11px;
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+
+    /* ===== 滚动动画 ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<!-- ===== Hero 主视觉区 ===== -->
+<section class="hero" id="home">
+  <!-- 产品大图背景 -->
+  <div class="hero-bg-img">
+    <img src="images/bottle-box.jpg" alt="甄果黔荟 刺梨复合果蔬汁">
+  </div>
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="float-leaf">🌿</div>
+  <div class="float-leaf">🍃</div>
+  <div class="float-leaf">🌱</div>
+  <div class="float-leaf">🍀</div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="t1">刺梨复合果蔬汁</span>
+      <span class="t2">滋养你，更多的快乐！</span>
+    </h1>
+    <p class="hero-tagline">—— 原生本味，还原干净初心 ——</p>
+    <p class="hero-slogan">
+      源自贵州深山的 <em>刺梨</em>，天然富含 <em>维生素C</em>、<em>SOD</em>、<em>多糖</em><br/>
+      融合优选果蔬精华，一瓶 = 一个果蔬园
+    </p>
+  </div>
+</section>
+
+<!-- ===== 品牌数据条 ===== -->
+<div class="banner-section">
+  <div class="stats-row">
+    <div class="stat-cell">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">果蔬汁含量</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <div class="stat-num">5000亩</div>
+      <div class="stat-label">刺梨种植基地</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <div class="stat-num">第三方</div>
+      <div class="stat-label">机构认证</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <div class="stat-num">0添加</div>
+      <div class="stat-label">防腐剂·色素·香精</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">天然原料</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 核心亮点区块 ===== -->
+<section id="features">
+  <div class="section-header reveal">
+    <div class="section-tag">PRODUCT FEATURES</div>
+    <h2 class="section-title">为什么选择甄果黔荟？</h2>
+    <p class="section-sub">每一瓶甄果黔荟，都是大自然对健康最真诚的馈赠</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-num">01</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(249,196,26,0.2), rgba(244,127,32,0.2));">🌿</div>
+      <h3>贵州刺梨 · 民族瑰宝</h3>
+      <p>刺梨是贵州特有的野生果实，与民族医药深度融合，被誉为"刺梨与民族医药"的天然结合。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">02</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(90,171,62,0.2), rgba(45,110,26,0.2));">💊</div>
+      <h3>天然维生素C · 含量超群</h3>
+      <p>每100克含维生素C 190mg（NRV 190%），远超柠檬、苹果。天然VC帮助提升免疫力、美白肌肤。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">03</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(244,127,32,0.2), rgba(212,95,0,0.2));">⚡</div>
+      <h3>SOD超氧化物歧化酶</h3>
+      <p>富含珍贵的SOD，人体内重要抗氧化物质，能有效清除自由基，延缓衰老，守护细胞健康。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">04</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(249,196,26,0.2), rgba(90,171,62,0.2));">🧬</div>
+      <h3>低温酶解技术</h3>
+      <p>采用先进低温酶解技术，最大限度保留刺梨活性营养物质，现代营养科学与传统智慧融合。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">05</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(90,171,62,0.2), rgba(249,196,26,0.2));">🥦</div>
+      <h3>复合果蔬 · 均衡营养</h3>
+      <p>刺梨原汁≥20%，搭配苹果、胡萝卜、百香果浓缩汁，果蔬汁含量100%，冷藏后味道更佳。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">06</div>
+      <div class="feature-icon" style="background: linear-gradient(135deg, rgba(244,127,32,0.15), rgba(249,196,26,0.15));">🏔️</div>
+      <h3>深山产地 · 自然馈赠</h3>
+      <p>源自贵州5000亩优质刺梨种植基地，龙里刺梨种植基地提供优质原料，天然纯净无污染。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 产品展示主区块 ===== -->
+<section id="products">
+  <div style="padding: 0 20px 28px;">
+    <div class="section-header reveal">
+      <div class="section-tag">PRODUCT SERIES</div>
+      <h2 class="section-title">产品系列</h2>
+      <p class="section-sub">精选优质配方，满足您的健康需求</p>
+    </div>
+  </div>
+
+  <div class="products-showcase">
+    <div class="showcase-left">
+      <span class="showcase-tag">🌟 明星产品</span>
+      <h2>刺梨复合<span>果蔬汁</span><br/>一瓶 = 一个果蔬园</h2>
+      <p>以刺梨原汁（≥20%）为核心，融合苹果、胡萝卜、百香果浓缩汁，果蔬汁含量100%，富含VC（190mg/100g）、SOD及多糖成分。</p>
+      <div class="nutrient-pills">
+        <span class="nutrient-pill">天然VC</span>
+        <span class="nutrient-pill">SOD酶</span>
+        <span class="nutrient-pill">多糖</span>
+        <span class="nutrient-pill">0防腐剂</span>
+        <span class="nutrient-pill">0色素</span>
+        <span class="nutrient-pill">0香精</span>
+      </div>
+      <div class="showcase-stats">
+        <div class="stat-item">
+          <div class="stat-num">25</div>
+          <div class="stat-unit">倍+</div>
+          <div class="stat-label">超苹果VC</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-unit"></div>
+          <div class="stat-label">果蔬汁含量</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">340</div>
+          <div class="stat-unit">ml</div>
+          <div class="stat-label">精心配比</div>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-right">
+      <div class="showcase-right-img-card">
+        <img src="images/bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁">
+        <div class="img-title">刺梨复合果蔬汁</div>
+        <div class="img-sub">Cili Compound Fruit & Vegetable Juice</div>
+        <div class="nutrient-badges">
+          <div class="nutrient-badge">
+            <div class="val">VC</div>
+            <div class="lbl">天然富含</div>
+          </div>
+          <div class="nutrient-badge">
+            <div class="val">SOD</div>
+            <div class="lbl">超氧化物歧化酶</div>
+          </div>
+          <div class="nutrient-badge">
+            <div class="val">多糖</div>
+            <div class="lbl">活性多糖</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary">立即购买</button>
+    </div>
+  </div>
+
+  <!-- 产品详细图片 -->
+  <div class="product-detail-imgs">
+    <div class="product-detail-img-card reveal">
+      <img src="images/bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁 单瓶">
+      <div class="caption">
+        <h3>甄果黔荟 · 刺梨复合果蔬汁</h3>
+        <p>单瓶 340ml · 天然健康饮品</p>
+      </div>
+    </div>
+    <div class="product-detail-img-card reveal">
+      <img src="images/bottle-box.jpg" alt="甄果黔荟 刺梨复合果蔬汁 礼盒装">
+      <div class="caption">
+        <h3>甄果黔荟 · 礼盒装</h3>
+        <p>整箱12瓶 · 送礼佳品</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 贵州产地故事区块 ===== -->
+<section id="story">
+  <div class="story-imgs reveal">
+    <div class="story-img-wrap story-img-main">
+      <img src="images/product-label.jpg" alt="刺梨果实">
+    </div>
+    <div class="story-img-wrap story-img-secondary">
+      <img src="images/product-label.jpg" alt="刺梨与甄果黔荟">
+    </div>
+    <div class="story-badge-float">
+      <div class="big-num">5000</div>
+      <div class="big-unit">亩种植基地</div>
+    </div>
+  </div>
+  <div class="story-content reveal">
+    <div class="section-tag">ORIGIN STORY</div>
+    <h2 class="section-title">来自贵州深山的天然馈赠</h2>
+    <p>刺梨（Rosa roxburghii），贵州独有的珍贵野生果实，生长于贵州高原深山之中，在独特的亚热带气候与高原土壤滋养下，孕育出极为丰富的天然营养物质。</p>
+    <p>自古以来，刺梨便是贵州少数民族传统医药的重要原料，承载着数百年的民族智慧与健康传承。</p>
+    <p>甄果黔荟在贵州龙里建立5000亩优质刺梨种植基地，采用天然种植、科学管理的方式，将最纯净的刺梨精华融入每一瓶产品中。</p>
+    <div class="story-highlights">
+      <div class="story-highlight-item">
+        <div class="icon">🏔️</div>
+        <h4>高原产地</h4>
+        <p>海拔1000m+龙里产区</p>
+      </div>
+      <div class="story-highlight-item">
+        <div class="icon">🌿</div>
+        <h4>天然种植</h4>
+        <p>自然生态种植</p>
+      </div>
+      <div class="story-highlight-item">
+        <div class="icon">🏛️</div>
+        <h4>民族智慧</h4>
+        <p>传统养生之道</p>
+      </div>
+      <div class="story-highlight-item">
+        <div class="icon">🔬</div>
+        <h4>科学配方</h4>
+        <p>现代与传统融合</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 营养科学区块 ===== -->
+<section id="nutrition">
+  <div class="section-header reveal">
+    <div class="section-tag">NUTRITION SCIENCE</div>
+    <h2 class="section-title">三重黄金营养<br/>科学健康配方</h2>
+    <p class="section-sub">低温酶解技术锁住天然活性营养</p>
+  </div>
+  <div class="nutrition-grid">
+    <div class="nutrition-card reveal">
+      <div class="nutrition-icon">💊</div>
+      <h3>维生素C</h3>
+      <div class="nutrition-highlight" style="font-size: 14px; font-weight: 900;">190mg/100g · NRV 190%</div>
+      <p>刺梨天然维生素C含量极高，每100克含190mg，活性强、吸收好，有助于提高免疫力、保护皮肤健康。</p>
+    </div>
+    <div class="nutrition-card reveal">
+      <div class="nutrition-icon">⚡</div>
+      <h3>SOD超氧化物歧化酶</h3>
+      <div class="nutrition-highlight">低温酶解 · 活性保留</div>
+      <p>清除自由基的重要酶类，被誉为"抗衰老明星"。低温酶解技术最大限度保留天然活性。</p>
+    </div>
+    <div class="nutrition-card reveal">
+      <div class="nutrition-icon">🧃</div>
+      <h3>100% 果蔬汁含量</h3>
+      <div class="nutrition-highlight">Pure · 不加水稀释</div>
+      <p>配料表纯净，无防腐剂、无色素、无香精。果蔬汁含量达100%，每一滴都是植物精华。</p>
+    </div>
+  </div>
+
+  <!-- 低温技术说明 -->
+  <div class="tech-box reveal">
+    <h3>低温酶解技术<br/><span>锁住天然活性</span></h3>
+    <p>传统高温处理会破坏果蔬中的活性营养物质，甄果黔荟采用先进的低温酶解技术，确保VC、SOD等热敏性营养物质最大限度保留。</p>
+    <div class="tech-stats">
+      <div class="tech-stat">
+        <div class="val">≤4°C</div>
+        <div class="lbl">低温处理</div>
+      </div>
+      <div class="tech-stat">
+        <div class="val">98%</div>
+        <div class="lbl">营养保留率</div>
+      </div>
+      <div class="tech-stat">
+        <div class="val">100%</div>
+        <div class="lbl">天然原料</div>
+      </div>
+    </div>
+    <div class="tech-list">
+      <div class="tech-item">
+        <span class="emoji">🌡️</span>
+        <div class="info">
+          <div class="title">低温冷链生产</div>
+          <div class="desc">全程冷链管控，锁鲜保活</div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <span class="emoji">🔬</span>
+        <div class="info">
+          <div class="title">酶解萃取技术</div>
+          <div class="desc">高效提取营养精华</div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <span class="emoji">✅</span>
+        <div class="info">
+          <div class="title">第三方权威认证</div>
+          <div class="desc">多项质量安全检测认证</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 配方成分区块 ===== -->
+<section id="formula">
+  <div class="section-header reveal">
+    <div class="section-tag">FORMULA</div>
+    <h2 class="section-title">黄金配方<br/>十种果蔬精华</h2>
+    <p class="section-sub">刺梨原汁≥20%，搭配苹果、胡萝卜、百香果浓缩汁，纯粹配方自然好味</p>
+  </div>
+
+  <div class="formula-visual reveal">
+    <!-- 中间产品瓶身 -->
+    <div class="formula-center">
+      <div class="formula-bottle">
+        <div class="inner">
+          <div class="brand">甄果黔荟</div>
+          <div class="eng">甄果黔荟</div>
+          <div class="divider"></div>
+          <div class="name">刺梨复合果蔬汁</div>
+          <div class="tags">
+            <span>VC</span>
+            <span>SOD</span>
+          </div>
+        </div>
+        <div class="star">✨</div>
+        <div class="vol">340ml</div>
+      </div>
+    </div>
+
+    <!-- 食材列表 -->
+    <div class="formula-ingredients">
+      <div class="ingredient-item">
+        <span class="ingredient-emoji">🌵</span>
+        <div class="ingredient-info">
+          <h4>刺梨原汁</h4>
+          <p>≥20% · 贵州龙里产</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item">
+        <span class="ingredient-emoji">🍎</span>
+        <div class="ingredient-info">
+          <h4>苹果浓缩汁</h4>
+          <p>天然果糖 · 清甜口感</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 75%;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item">
+        <span class="ingredient-emoji">🥕</span>
+        <div class="ingredient-info">
+          <h4>胡萝卜浓缩汁</h4>
+          <p>β-胡萝卜素 · 营养丰富</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 70%;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item">
+        <span class="ingredient-emoji">🍊</span>
+        <div class="ingredient-info">
+          <h4>百香果浓缩汁</h4>
+          <p>热带风味 · 清新酸甜</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 65%;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item" style="background: linear-gradient(145deg, #f0f9ff, #e0f0ff);">
+        <span class="ingredient-emoji">🧊</span>
+        <div class="ingredient-info">
+          <h4>冰镇一下 口感更佳</h4>
+          <p>冷藏后风味更清爽</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 100%; background: #5ba0d0;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item" style="background: linear-gradient(145deg, #f0fff4, #e0ffe8);">
+        <span class="ingredient-emoji">✅</span>
+        <div class="ingredient-info">
+          <h4>100% 果蔬汁含量</h4>
+          <p>纯粹配方不加一滴水</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 100%; background: #5aab3e;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item" style="background: linear-gradient(145deg, #fff9f0, #fff0e0);">
+        <span class="ingredient-emoji">📋</span>
+        <div class="ingredient-info">
+          <h4>保质期 12个月</h4>
+          <p>执行标准 GB/T 31121</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 80%; background: #f47f20;"></div></div>
+        </div>
+      </div>
+      <div class="ingredient-item" style="background: linear-gradient(145deg, #fffff0, #fff8e0);">
+        <span class="ingredient-emoji">💡</span>
+        <div class="ingredient-info">
+          <h4>饮用须知</h4>
+          <p>沉淀为果肉成分，摇匀饮用</p>
+          <div class="ingredient-bar"><div class="ingredient-bar-fill" style="width: 60%; background: #f9c41a;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 信任背书区块 ===== -->
+<section id="trust">
+  <div class="section-header reveal">
+    <div class="section-tag">QUALITY ASSURANCE</div>
+    <h2 class="section-title">品质保障<br/>值得信赖</h2>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-item reveal">
+      <span class="trust-icon">🏆</span>
+      <h4>第三方权威认证</h4>
+      <p>通过第三方质量认证，放心饮用</p>
+    </div>
+    <div class="trust-item reveal">
+      <span class="trust-icon">🔬</span>
+      <h4>入驻检验机构认证</h4>
+      <p>多维度质量检测，符合国家标准</p>
+    </div>
+    <div class="trust-item reveal">
+      <span class="trust-icon">🏅</span>
+      <h4>中国人保品质保证</h4>
+      <p>获中国人民保险集团品质保证</p>
+    </div>
+    <div class="trust-item reveal">
+      <span class="trust-icon">📜</span>
+      <h4>国标认证 · 安全放心</h4>
+      <p>GB/T 31121，SC10652011511908</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 关于我们区块 ===== -->
+<section id="about">
+  <div class="about-content reveal">
+    <div class="section-tag">ABOUT US</div>
+    <h2 class="section-title">关于甄果黔荟</h2>
+    <p>甄果黔荟隶属于<strong>贵州得一健康管理有限公司</strong>，坐落于贵州省贵阳市高新区，是一家专注于贵州特色健康饮品研发与推广的企业。以"滋养你，更多的快乐"为核心理念，致力于将贵州刺梨这一珍贵自然资源转化为现代人的健康之选。</p>
+    <p>我们深入贵州腹地，在龙里县建立了5000亩优质刺梨种植基地。结合民族智慧与现代科技，采用低温酶解等先进工艺，打造刺梨复合果蔬汁创新健康产品。</p>
+    <p>我们坚信：<strong>自然的馈赠，是最好的健康礼物</strong>。</p>
+    <div class="about-tags">
+      <span class="about-tag">🏔️ 贵州特色</span>
+      <span class="about-tag">🌿 天然健康</span>
+      <span class="about-tag">🔬 科学配方</span>
+      <span class="about-tag">🏛️ 民族智慧</span>
+      <span class="about-tag">✅ 品质认证</span>
+      <span class="about-tag">🌍 走向世界</span>
+    </div>
+  </div>
+  <div class="about-img-grid reveal">
+    <div class="about-img-item tall">
+      <div class="ph" style="background: linear-gradient(145deg, #e8f8e0, #d0f0c0);">
+        <span class="ph-emoji">🌄</span>
+        <span class="ph-text" style="color: var(--dark-green);">贵州高原<br/>刺梨产地</span>
+      </div>
+    </div>
+    <div class="about-img-item">
+      <div class="ph" style="background: linear-gradient(145deg, #fff9e6, #fff3c0);">
+        <span class="ph-emoji">🌵</span>
+        <span class="ph-text" style="color: var(--orange);">刺梨果实</span>
+      </div>
+    </div>
+    <div class="about-img-item">
+      <div class="ph" style="background: linear-gradient(145deg, #fff0e8, #ffe0c0);">
+        <img src="images/bottle-single.jpg" alt="甄果黔荟产品" style="max-height: 140px; object-fit: contain; border-radius: 10px;">
+        <span class="ph-text" style="color: var(--orange);">甄果黔荟产品</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA区块 ===== -->
+<section id="cta">
+  <div class="section-title reveal">深山好物 · 走向世界<br/>Nature's Gift</div>
+  <p class="reveal">现在下单，享受贵州刺梨带来的天然健康体验<br/>一瓶入喉，感受大自然最纯粹的滋养</p>
+  <div class="cta-btns reveal">
+    <button class="btn-white">立即购买</button>
+    <button class="btn-outline-white">了解更多</button>
+  </div>
+</section>
+
+<!-- ===== 扫码咨询 ===== -->
+<section class="qr-section reveal">
+  <div class="qr-card">
+    <div class="qr-card-icon">💬</div>
+    <h3>扫码咨询</h3>
+    <p class="qr-sub">长按识别二维码<br/>了解更多产品详情与优惠</p>
+    <div class="qr-img-wrap">
+      <img src="images/qr-wechat.png" alt="扫码咨询">
+    </div>
+    <span class="qr-tip">📱 微信扫一扫 立即沟通</span>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="footer-logo">🌿 甄果黔荟</div>
+  <p>刺梨复合果蔬汁 · 贵州特色天然健康饮品</p>
+  <p style="margin-top: 12px; font-size: 11px; opacity: 0.5;">© 2024 甄果黔荟. All Rights Reserved.<br/>贵州得一健康管理有限公司 | SC10652011511908</p>
+</footer>
+
+<!-- ===== JavaScript ===== -->
+<script>
+  // 滚动动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
