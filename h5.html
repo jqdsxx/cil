@@ -161,59 +161,122 @@
       letter-spacing: 2px;
       animation: fadeInUp 1.1s ease 0.3s both;
     }
-    .hero-products {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 32px;
-      animation: fadeInUp 1.1s ease 0.3s both;
-    }
-    .hero-product-img {
-      background: linear-gradient(145deg, #fff9e6, #fff3c0);
-      border-radius: 18px;
-      padding: 14px 12px;
-      box-shadow: 0 8px 28px rgba(244,127,32,0.15), 0 2px 6px rgba(0,0,0,0.05);
+    /* ===== Hero 产品分层构图 ===== */
+    .hero-products-scene {
       position: relative;
-      overflow: hidden;
+      width: 100%;
+      max-width: 340px;
+      height: 360px;
+      margin: 0 auto 12px;
+      animation: fadeInUp 1.1s ease 0.3s both;
+      overflow: visible;
     }
-    .hero-product-img::before {
-      content: '';
+    /* 礼盒装大图：背景层 */
+    .hero-product-bg {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(249,196,26,0.1) 0%, transparent 60%);
-      border-radius: inherit;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      z-index: 1;
     }
-    .hero-product-img.main {
-      width: 140px;
-      z-index: 3;
-    }
-    .hero-product-img.side {
-      width: 100px;
-      opacity: 0.85;
-      z-index: 2;
-    }
-    .hero-product-img img {
+    .hero-product-bg img {
       width: 100%;
       height: auto;
       display: block;
-      object-fit: contain;
-      position: relative;
-      z-index: 1;
+      opacity: 0.5;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.06));
+      transform: scale(1.08);
     }
-    .hero-product-img .product-label {
+    /* 瓶装小图：前景层 */
+    .hero-product-fg {
       position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.9);
-      color: var(--orange);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-      z-index: 2;
+      bottom: 15px;
+      left: -8px;
+      width: 100px;
+      z-index: 3;
+    }
+    .hero-product-fg img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.2));
+    }
+    /* 边缘装饰：刺梨半露 */
+    .hero-edge-deco {
+      position: absolute;
+      z-index: 5;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.12));
+      pointer-events: none;
+    }
+    .hero-edge-deco.deco-left {
+      top: 22%;
+      left: -40px;
+      width: 90px;
+    }
+    .hero-edge-deco.deco-right {
+      top: 15%;
+      right: -55px;
+      width: 100px;
+    }
+    .hero-edge-deco.deco-right-bottom {
+      top: 55%;
+      right: -90px;
+      width: 170px;
+    }
+    .hero-edge-deco img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* 右上方刺梨水平翻转 */
+    .hero-edge-deco.deco-right img {
+      transform: scaleX(-1);
+    }
+    /* 金桔装饰：瓶装右下角 */
+    .hero-kumquat {
+      position: absolute;
+      bottom: 5px;
+      left: 65px;
+      width: 45px;
+      z-index: 4;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.18));
+      pointer-events: none;
+    }
+    .hero-kumquat img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* 刺梨果实装饰：金桔右边 */
+    .hero-cili-fruit {
+      position: absolute;
+      bottom: -10px;
+      left: 95px;
+      width: 110px;
+      z-index: 4;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.18));
+      pointer-events: none;
+    }
+    .hero-cili-fruit img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* 刺梨汁玻璃杯：最前景 */
+    .hero-juice {
+      position: absolute;
+      bottom: 0;
+      left: -30px;
+      width: 90px;
+      z-index: 5;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.22));
+      pointer-events: none;
+    }
+    .hero-juice img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
     .hero-cta-group {
       display: flex;
@@ -498,17 +561,6 @@
       object-fit: cover;
       display: block;
     }
-    .product-detail-img-card .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
-      color: #fff;
-      padding: 24px 16px 16px;
-    }
-    .product-detail-img-card .caption h3 { font-size: 17px; font-weight: 700; }
-    .product-detail-img-card .caption p { font-size: 12px; opacity: 0.8; }
 
     /* ===== 贵州产地故事区块 ===== */
     #story {
@@ -1041,21 +1093,27 @@
       <span class="t2">滋养你，更多的快乐！</span>
     </h1>
 
-    <!-- 产品图像展示 -->
-    <div class="hero-products">
-      <div class="hero-product-img side" style="transform: rotate(-3deg);">
-        <img src="bottle-box.jpg" alt="甄果黔荟 礼盒装">
-        <div class="product-label">甄果黔荟 · 礼盒装</div>
+    <!-- 产品分层构图展示 -->
+    <div class="hero-products-scene">
+      <!-- 礼盒装大图：背景层 -->
+      <div class="hero-product-bg">
+        <img src="images/giftbox.png" alt="甄果黔荟 礼盒装">
       </div>
-
-      <div class="hero-product-img main">
-        <img src="bottle-box.jpg" alt="甄果黔荟 刺梨复合果蔬汁 礼盒装">
-        <div class="product-label">✨ 明星爆款</div>
+      <!-- 瓶装小图：前景 -->
+      <div class="hero-product-fg">
+        <img src="images/cl1.png" alt="甄果黔荟 单瓶装">
       </div>
-
-      <div class="hero-product-img side" style="transform: rotate(3deg);">
-        <img src="bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁">
-        <div class="product-label">甄果黔荟 · 单瓶装</div>
+      <!-- 金桔装饰：瓶装右下角 -->
+      <div class="hero-kumquat">
+        <img src="images/kumquat-single.png" alt="金桔">
+      </div>
+      <!-- 刺梨果实装饰：金桔右边 -->
+      <div class="hero-cili-fruit">
+        <img src="images/cili-fruit.png" alt="刺梨">
+      </div>
+      <!-- 刺梨汁玻璃杯：最前景 -->
+      <div class="hero-juice">
+        <img src="images/juice-glass.png" alt="刺梨汁">
       </div>
     </div>
 
@@ -1069,6 +1127,11 @@
     <span>向下滚动</span>
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M5 12l10-5-5" stroke="#bbb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
+
+  <!-- 边缘装饰：刺梨半露 -->
+  <div class="hero-edge-deco deco-left"><img src="images/cili-leaf.png" alt="刺梨"></div>
+  <div class="hero-edge-deco deco-right"><img src="images/cili-leaf.png" alt="刺梨"></div>
+  <div class="hero-edge-deco deco-right-bottom"><img src="images/cili-leaf.png" alt="刺梨"></div>
 </section>
 
 <!-- ===== 品牌数据横幅 ===== -->
@@ -1143,7 +1206,7 @@
       <div class="showcase-right-bg"></div>
       <div class="showcase-right-inner">
         <div class="showcase-right-card">
-          <img src="bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁 单瓶装">
+          <img src="images/bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁 单瓶装">
           <div class="product-name">甄果黔荟 · 刺梨复合果蔬汁</div>
           <div class="product-en">Cili Compound Fruit & Vegetable Juice</div>
           <div class="showcase-right-nutrients" style="margin-top:12px;">
@@ -1160,18 +1223,10 @@
   <!-- 产品详细图片展示 -->
   <div class="product-detail-imgs">
     <div class="product-detail-img-card reveal">
-      <img src="bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁 单瓶">
-      <div class="caption">
-        <h3>甄果黔荟 · 刺梨复合果蔬汁</h3>
-        <p>单瓶 340ml · 天然健康饮品</p>
-      </div>
+      <img src="images/bottle-single.jpg" alt="甄果黔荟 刺梨复合果蔬汁 单瓶">
     </div>
     <div class="product-detail-img-card reveal">
-      <img src="bottle-box.jpg" alt="甄果黔荟 刺梨复合果蔬汁 礼盒装">
-      <div class="caption">
-        <h3>甄果黔荟 · 礼盒装</h3>
-        <p>整箱12瓶 · 送礼佳品</p>
-      </div>
+      <img src="images/bottle-box.jpg" alt="甄果黔荟 刺梨复合果蔬汁 礼盒装">
     </div>
   </div>
 </section>
@@ -1180,10 +1235,10 @@
 <section id="story">
   <div class="story-imgs reveal">
     <div class="story-img-main-wrap">
-      <img src="product-label.jpg" alt="刺梨果实">
+      <img src="images/product-label.jpg" alt="刺梨果实">
     </div>
     <div class="story-img-secondary-wrap">
-      <img src="product-label.jpg" alt="刺梨与甄果黔荟">
+      <img src="images/product-label.jpg" alt="刺梨与甄果黔荟">
     </div>
     <div class="story-badge-float">
       <div class="big-num">5000</div>
@@ -1448,7 +1503,7 @@
       </div>
     </div>
     <div class="about-img-item">
-      <img src="bottle-single.jpg" alt="甄果黔荟产品" style="width:100%;height:100%;object-fit:contain;border-radius:14px;display:block;">
+      <img src="images/bottle-single.jpg" alt="甄果黔荟产品" style="width:100%;height:100%;object-fit:contain;border-radius:14px;display:block;">
     </div>
   </div>
 </section>
@@ -1476,7 +1531,7 @@
       <span>微信扫码咨询</span>
     </div>
     <div class="qr-img-wrap">
-      <img src="wechat-qr.png" alt="微信联系二维码" />
+      <img src="images/wechat-qr.png" alt="微信联系二维码" />
     </div>
     <div class="qr-label">扫码添加微信</div>
     <div class="qr-hint">获取产品报价 · 了解代理政策<br/>批量采购 · 品牌合作</div>
